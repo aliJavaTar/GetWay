@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: cloud_GatWay
+  cloud:
+    gateway:
+      routes:
+        - id: micro
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/invoice/buy/**
+          filters:
+            - StripPrefix=1
